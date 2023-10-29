@@ -6,6 +6,6 @@ export const cartSlice = createSlice({
         list:[]
     },
     reducers:{
-        addItem: (state,payload)
+        addItem: [state,payload]
     }
 })
