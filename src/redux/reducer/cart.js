@@ -6,6 +6,12 @@ export const cartSlice = createSlice({
         list:[]
     },
     reducers:{
-        addItem: [state,payload]
-    }
+        addItem: (state,{payload})=>{
+            state.list = [...state.list, payload];
+        },
+
+    },
 })
+
+export const {addItem} = cartSlice.actions;
+export default cartSlice.reducer;
