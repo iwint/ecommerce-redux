@@ -31,7 +31,7 @@ export default function Product() {
             </>
             
           ) : (
-            <button className="btn btn-outline-danger">Out of stock</button>
+            <button className="btn btn-outline-danger">Out Of Stock</button>
           )}
         </div>
       </div>
