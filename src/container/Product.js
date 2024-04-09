@@ -1,12 +1,20 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { ProductList } from "../data/ProductList";
+import { useDispatch } from "react-redux";
+import { addItem } from "../redux/reducer/cart";
+
 
 export default function Product() {
   const params = useParams();
+  const dispatch = useDispatch();
   const props = ProductList.find(
     (element) => element.id === parseInt(params.id)
   );
+  const addTocart = ()=>{
+     dispatch(addItem(props))
+    //  console.log("clicked");
+  }
   return (
     <div className="card mt-2 ">
       <div className="mt-2">
@@ -27,7 +35,7 @@ export default function Product() {
           {props.stock > 0 ? (
             <>
                 <button className="btn btn-success">Buy Now</button>
-                <button className="ms-3 btn btn-success">Add to cart</button>
+                <button className="ms-3 btn btn-success" onClick={addTocart}>Add to cart</button>
             </>
             
           ) : (
