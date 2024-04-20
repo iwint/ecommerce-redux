@@ -1,6 +1,7 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore'; // Import compat version for now
 import 'firebase/compat/auth';
+import { ProductList } from '../data/ProductList';
 
 
 const firebaseConfig = {
@@ -15,21 +16,23 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-// const handlePopulate = async () => {
-//     console.log('Populating Firestore with JSON data...');
+const handlePopulate = async () => {
+    console.log('Populating Firestore with JSON data...');
 
-//     const data = [...ProductList];
+    const data = [...ProductList];
 
-//     const db = firebase.firestore();
+    const db = firebase.firestore();
 
-//     data.forEach(async (item) => {
-//         try {
-//             await db.collection('products').add(item);
-//             console.log('Item added to Firestore:', item);
-//         } catch (error) {
-//             console.error('Error adding item to Firestore:', error);
-//         }
-//     });
-// };
+    data.forEach(async (item) => {
+        try {
+            await db.collection('products').add(item);
+            console.log('Item added to Firestore:', item);
+        } catch (error) {
+            console.error('Error adding item to Firestore:', error);
+        }
+    });
+};
+
+export { handlePopulate };
 
 export default firebase;

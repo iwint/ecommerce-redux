@@ -1,28 +1,51 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
-import Ratings from './Ratings';
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Typography,
+  Button,
+} from "@material-tailwind/react";
+import Ratings from "../components/Ratings";
+import { useNavigate } from "react-router-dom";
 
-export default function ProductCard(props) {
+export function ProductCard(props) {
   const navigate = useNavigate();
   return (
-    <div className='card mt-2 cursor-pointer ' style={{ width: 350 }} role='button' onClick={() => { navigate(`/product/${props.id}`) }} >
-
-      <div className='mt-2'>
-        <img src={props?.thumbnail} height={180} width={150} alt={props?.title} className='border-radius-9' />
-      </div>
-      <div className='card-body'>
-        <div className='card-title'>{props.title}</div>
-        <h6 className='mt-2'>Price: {`$${props.price}`}</h6>
-        <h6 className='mt-2'>Discount: {`$${props.discountPercentage}`}%</h6>
-        <h6 className='mt-2 d-flex align-items-center justify-content-center'>Rating:
-          <Ratings value={props.rating} readOnly />
-        </h6>
-        <div>
-          {props.stock > 0 ? <button className='btn btn-success'>Available</button> : <button className='btn btn-outline-danger'>Out of stock</button>}
+    <Card className="w-96">
+      <CardHeader shadow={false} floated={false} className="h-96">
+        <img
+          src={props?.thumbnail}
+          alt="card-image"
+          className="h-full w-full object-cover"
+        />
+      </CardHeader>
+      <CardBody>
+        <div className="mb-2 flex items-center justify-between">
+          <Typography color="blue-gray" className="font-medium">
+            {props?.title}
+          </Typography>
+          <Typography color="blue-gray" className="font-medium">
+            {`$${props?.price}`}
+          </Typography>
         </div>
-      </div>
+        <div className="flex items-center justify-between">
+          {props?.stock > 0 ? <button className='btn btn-success'>Available</button> : <button className='btn btn-outline-danger'>Out of stock</button>}
+          <Ratings value={props?.rating} readOnly />
+        </div>
 
-    </div>
-  )
+      </CardBody>
+      <CardFooter className="pt-0">
+
+        <Button
+          onClick={() => { navigate(`/product/${props.id}`) }}
+          ripple={false}
+          fullWidth={true}
+          className="bg-blue-gray-900/10 text-blue-gray-900 shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100"
+        >
+          View
+        </Button>
+      </CardFooter>
+    </Card >
+  );
 }
-

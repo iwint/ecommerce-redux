@@ -1,12 +1,12 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-// import firebase, { handlePopulate } from '../config/firebase';
-// import { ProductList } from '../data/ProductList';
+import firebase, { handlePopulate } from '../config/firebase';
+
 
 export default function Header() {
   const navigate = useNavigate();
   const handleLogout = () => {
-    localStorage.removeItem('token');
+    localStorage.clear();
     navigate('/login');
   }
 
@@ -20,6 +20,7 @@ export default function Header() {
           <input className='form-control' type='search' placeholder='search the item' />
           <button className='btn btn-warning ms-4' onClick={() => { navigate("/cart") }}>Cart </button>
           <button className='btn btn-warning ms-4 w-50' onClick={handleLogout}>Log out </button>
+          {/* <button className='btn btn-warning ms-4 w-50' onClick={handlePopulate}>Populate </button> */}
         </div>
       </div>
     </div>
