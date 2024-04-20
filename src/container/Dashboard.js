@@ -3,6 +3,9 @@ import ProductCard from '../components/ProductCard'
 import firebase from '../config/firebase'
 import { useDispatch, useSelector } from 'react-redux'
 import { setProducts } from '../redux/reducer/products'
+import Ratings from '../components/Ratings'
+import { ChevronRight } from '@mui/icons-material'
+import { EcommerceCard } from './demo'
 
 export default function Dashboard() {
   const ProductList = useSelector((state) => state.products.products)
@@ -21,7 +24,8 @@ export default function Dashboard() {
 
   return (
     <div className='d-flex flex-wrap gap-2 justify-content-center'>
-      {ProductList.map((Product) => <ProductCard {...Product} />)}
+
+      {ProductList.map((Product) => <EcommerceCard {...Product} />)}
     </div>
   )
 }
