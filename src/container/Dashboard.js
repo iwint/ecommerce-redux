@@ -16,6 +16,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     getAllProducts()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ProductList])
 
 
