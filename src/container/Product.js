@@ -39,14 +39,21 @@ export default function Product() {
 
   const handleReviews = async () => {
     const reviewedItem = {
-      id: props?.reviews ? props?.reviews.length + 1 : 1,
+      id: props.reviews ? props.reviews.length + 1 : 1,
       rating: reviewData.rating,
       review: reviewData.review,
       date: new Date().toLocaleDateString(),
     }
-    const item = {
-      review: props?.review ? [...props?.review, reviewedItem] : [reviewedItem],
+    let item = {
+      review: props?.review,
       ...props,
+    }
+    if (item.review) {
+      let existing = [...item.review]
+      existing.push(reviewedItem)
+      item.review = existing
+    } else {
+      item.review = [reviewedItem]
     }
     if (reviewedItem.review.length > 0) {
       const index = ProductList.indexOf(props)
@@ -76,23 +83,23 @@ export default function Product() {
         {alert && <span className="alert alert-success">Item added to the cart</span>}
         <div className="mt-2">
           <img
-            src={props.thumbnail}
+            src={props?.thumbnail}
             height={350}
             width={400}
-            alt={props.title}
+            alt={props?.title}
             className="border-radius-9"
           />
         </div>
         <div className="card-body mt-3">
-          <div className="card-title">{props.title}</div>
-          <h6 className="mt-2">Price: {`$${props.price}`}</h6>
-          <h6 className="mt-2">Discount: {`$${props.discountPercentage}`}%</h6>
-          <h6 className="mt-2">Rating: {`$${props.rating}`}/5</h6>
+          <div className="card-title">{props?.title}</div>
+          <h6 className="mt-2">Price: {`$${props?.price}`}</h6>
+          <h6 className="mt-2">Discount: {`$${props?.discountPercentage}`}%</h6>
+          <h6 className="mt-2">Rating: {`$${props?.rating}`}/5</h6>
           <div className="mt-3">
-            {props.stock > 0 ? (
+            {props?.stock > 0 ? (
               <>
                 <button className="btn btn-success" onClick={() => {
-                  navigate(`/checkout/${props.id}`);
+                  navigate(`/checkout/${props?.id}`);
                 }}>Buy Now</button>
                 {element?.count > 0 ? (<button className="ms-3 btn btn-outline-warning" onClick={() => { navigate("/cart") }}>Go to cart</button>)
                   : (<button className="ms-3 btn btn-success" onClick={addTocart}>Add to cart</button>)}

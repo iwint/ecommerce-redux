@@ -20,7 +20,7 @@ export default function Dashboard() {
 
 
   return (
-    <div className='d-flex flex-wrap justify-content-center'>
+    <div className='d-flex flex-wrap gap-2 justify-content-center'>
       {ProductList.map((Product) => <ProductCard {...Product} />)}
     </div>
   )
