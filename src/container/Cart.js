@@ -39,7 +39,7 @@ export default function Cart() {
               removeItem={() => removeItemFromCart(item)}
             />
           ))}
-          <button className="btn btn-success" onClick={()=>navigate("/checkout")}>Go to checkout</button>
+          <button className="btn btn-success" onClick={() => navigate("/checkout")}>Go to checkout</button>
         </>
       ) : (
         <h3>No item in the cart</h3>

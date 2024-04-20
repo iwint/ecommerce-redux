@@ -1,4 +1,6 @@
-import React from "react";
+import React from 'react'
+import Ratings from './Ratings'
+
 
 export default function ProductListItem(props) {
   return (
@@ -13,7 +15,9 @@ export default function ProductListItem(props) {
       <h5 className="card-title me-4">{props.title}</h5>
       <h6 className="mt-2 me-4">Price: {`$${props.price}`}</h6>
       <h6 className="mt-2 me-4">Discount: {`$${props.discountPercentage}`}%</h6>
-      <h6 className="mt-2 me-4">Rating: {`$${props.rating}`}/5</h6>
+      <h6 className='mt-2 d-flex align-items-center justify-content-center'>Rating:
+        <Ratings value={props.rating} />
+      </h6>
 
       <button className="btn btn-success ms-3" onClick={props.incrementItem}>+</button>
       <span className="ms-3">Quantity{props.count}</span>

@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <Provider store={store} />
-      <Router/>
+      <Router />
     </div>
   );
 }
