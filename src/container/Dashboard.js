@@ -6,9 +6,10 @@ import { setProducts } from '../redux/reducer/products'
 import Ratings from '../components/Ratings'
 import { ChevronRight } from '@mui/icons-material'
 import { EcommerceCard } from './demo'
+import { ProductList } from '../data/ProductList'
 
 export default function Dashboard() {
-  const ProductList = useSelector((state) => state.products.products)
+  // const ProductList = useSelector((state) => state.products.products)
   const dispatch = useDispatch()
 
   const getAllProducts = async () => {
@@ -17,9 +18,9 @@ export default function Dashboard() {
     await dispatch(setProducts(products.docs.map((doc) => doc.data())))
   }
 
-  useEffect(() => {
-    getAllProducts()
-  }, [ProductList])
+  // useEffect(() => {
+  //   getAllProducts()
+  // }, [ProductList])
 
 
   return (
