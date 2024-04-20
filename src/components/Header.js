@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import firebase, { handlePopulate } from '../config/firebase';
-import { ProductList } from '../data/ProductList';
+// import firebase, { handlePopulate } from '../config/firebase';
+// import { ProductList } from '../data/ProductList';
 
 export default function Header() {
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ export default function Header() {
 
   return (
     <div className='p-3 bg-primary'>
-      <h3 style={{ color: 'white' }}>Pandian Mobiles</h3>
+      <h3 style={{ color: 'white' }}>QD Shop</h3>
       <div className='row justify-content-center'>
         <div className='col-sm-12 col-md-7 col-lg-6 col-xl-5 d-flex'>
           <button className='btn btn-warning me-4' onClick={() => { navigate('/') }}>Home </button>
